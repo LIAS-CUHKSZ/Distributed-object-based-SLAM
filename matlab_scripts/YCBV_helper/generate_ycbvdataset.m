@@ -168,12 +168,6 @@ landmarks(1).indexinorder=index1;
 
 
 
-
-
-
-
-
-
 %% Useless
 % Parameters related with camera
 Eff_Range=100;

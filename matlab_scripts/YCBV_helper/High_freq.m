@@ -43,7 +43,7 @@ for i = 1:steps-1
 end
 
 
-scatter3(poslist(:,1),poslist(:,2),poslist(:,3),10,'o'); hold on
+% scatter3(poslist(:,1),poslist(:,2),poslist(:,3),10,'o'); hold on
 
 
 end

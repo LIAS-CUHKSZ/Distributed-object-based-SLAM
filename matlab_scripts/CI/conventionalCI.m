@@ -19,7 +19,7 @@ omega=fminbnd(f,0,1,optimset('Display','off'),Ai,Bi,H);
 % omega=min(max(omega,0),1);
 
 % New covariance
-omega=0.998;
+omega=0.9994;
 C=inv(Ai*omega+H'*Bi*H*(1-omega));
 % New mean
 nu=b-H*a;

@@ -1,6 +1,6 @@
 
 
-function [m_data] = gen_measurement_SE3(Eff_Range, landmarks, A, sigma_if, sigma_ij, trigK, Position0, T_WORKING, dt_update)
+function [m_data] = gen_measurement_SE3(Eff_Range, landmarks, A, sigma_if, sigma_ij, trigK, Position0, T_WORKING, dt_update,xyzscale)
 %GEN_MEA_FEATURE_SE3 generate measurements of agents see feature
 % Input:
 %Eff_Range: only within this range, the agent can see the feature.
@@ -35,7 +35,7 @@ while(time<=T_WORKING+dt_update)
             T_feature = landmarks(nn).T;
             PF=T_feature(1:3,4); 
             % feature measurements
-            [~,~,~,Tr]=get_tria_point(time, Position0(i,:),trigK(i,:));
+            [~,~,~,Tr]=get_tria_point(time, Position0(i,:),trigK(i,:),xyzscale(i,:));
             pr=Tr(1:3,4);
             dis=norm(pr-PF);
             if dis<=Eff_Range
@@ -63,7 +63,7 @@ while(time<=T_WORKING+dt_update)
             j=neighbors(j_index);
             if(j~=i)
               
-                [~,~,~,Tj]=get_tria_point(time, Position0(neighbors(j_index),:),trigK(neighbors(j_index),:)); %Tn is the pose now of the neighbor.
+                [~,~,~,Tj]=get_tria_point(time, Position0(neighbors(j_index),:),trigK(neighbors(j_index),:),xyzscale(j_index),:); %Tn is the pose now of the neighbor.
                 
                 m_data(n).robot(i).index(nnn)=j;
                 n_ij=randn(6,1)*sigma_ij(i);

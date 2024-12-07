@@ -9,7 +9,7 @@ start_euler=[pi/2, 0, pi/3];
 R0=angle2dcm(start_euler(1), start_euler(2), start_euler(3));
 R=R0*so3_exp(W*time);
 % 
-Position=[ 20*sin(0.10*kx*(time))+x0,    10*cos(0.10*ky*(time))+y0, 5*sin(0.10*kz*(time))+z0];
+Position=[1*sin(0.10*kx*(time))+x0,   2*cos(0.10*ky*(time))+y0, 0.5*sin(0.10*kz*(time))+z0];
 %    
 
 % Position=[x0+0.4*time, y0+0.6*time,z0+0.5*time];

@@ -23,5 +23,40 @@ for time = 0:dt:T_SYSTEM+2*dt
 end
 scatter3(x(1),y(1),z(1),"red",'o','filled');hold on
 plot3(x,y,z,'black');hold on;
+
+
+%% 降采样，绘制方向
+axx=[1;0;0];axy=[0;1;0];axz=[0;0;1];
+n
+for m=1:n
+    if(mod(m,15)==0)
+        R=vehicle(m).T(1:3,1:3);
+        p=vehicle(m).T(1:3,4)';
+        bx=R*axx;
+        by=R*axy;
+        bz=R*axz;
+
+        axs_x=quiver3( p(m,1),p(m,2),p(m,3), bx(1), bx(2),bx(3),15);hold on
+        axs_x.Color='red';
+        axs_x.MaxHeadSize=7;
+        axs_x.LineWidth=1;
+
+        axs_y=quiver3( p(m,1),p(m,2),p(m,3), by(1), by(2),by(3),15);hold on
+        axs_y.Color='green';
+        axs_y.MaxHeadSize=7;
+        axs_y.LineWidth=1;
+
+        axs_z=quiver3( p(m,1),p(m,2),p(m,3), bz(1), bz(2),bz(3),15);hold on
+        axs_z.Color='blue';
+        axs_z.MaxHeadSize=7;
+        axs_z.LineWidth=1;
+        
+    end
+
+
+end
+
+
+
 T_real0=vehicle(1).T;
 end

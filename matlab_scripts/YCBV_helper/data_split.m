@@ -23,24 +23,30 @@ for i = 1:agent_num
     object_index={};
     for j = 1:length(sequence)
         [~, name, ~] = fileparts(sequence(j).name);
+        
         name = strrep(name, '-color', ''); % remove
-        mat_file = fullfile(data_path, [name, '-meta.mat']);
-        data = load(mat_file, 'rotation_translation_matrix');
-        R_t = data.rotation_translation_matrix;
+        fullfile(data_path, [name, '-metaf.mat']);
+
+
+        mat_file = fullfile(data_path, [name, '-metaf.mat']);
         
-        T_tt=eye(4);
-        T_tt(1:3,:)=R_t; 
-        TTTT=invT(T_tt);
-        poses{end+1} =TTTT(1:3,:);
-
-        
-        object_i=load(mat_file, 'cls_indexes');
-        object_index{end+1}=object_i;
-
-        obj_p=load(mat_file, 'poses');
-
-        obj_poses{end+1}=obj_p;
-
+        if ~exist(mat_file,'file')==0            
+            data = load(mat_file, 'rotation_translation_matrix');
+            R_t = data.rotation_translation_matrix;
+            
+            T_tt=eye(4);
+            T_tt(1:3,:)=R_t; 
+            TTTT=invT(T_tt);
+            poses{end+1} =TTTT(1:3,:);
+    
+            
+            object_i=load(mat_file, 'cls_indexes');
+            object_index{end+1}=object_i;
+    
+            obj_p=load(mat_file, 'poses');
+    
+            obj_poses{end+1}=obj_p;
+        end
     end
     obj_poses_all{i}=obj_poses;
     obj_index_all{i}=object_index;

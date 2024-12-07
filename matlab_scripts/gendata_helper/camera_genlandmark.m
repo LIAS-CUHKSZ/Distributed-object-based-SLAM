@@ -6,9 +6,9 @@ function [landmarks] = camera_genlandmark(n,center,wlh)
 
 
 landmarks=zeros(n,3);
-landmarks(1:n,1)=center(1)-wlh(1)+rand(n,1)*wlh(1);
-landmarks(1:n,2)=center(1)-wlh(2)+rand(n,1)*wlh(2);
-landmarks(1:n,3)=center(1)-wlh(3)+rand(n,1)*wlh(3);
+landmarks(1:n,1)=center(1)-wlh(1)+rand(n,1)*wlh(1)*2;
+landmarks(1:n,2)=center(1)-wlh(2)+rand(n,1)*wlh(2)*2;
+landmarks(1:n,3)=center(1)-wlh(3)+rand(n,1)*wlh(3)*2;
 
 
 
@@ -22,8 +22,8 @@ zlabel('z');
 
 axis equal;
 % draw landmarks
-scatter3( landmarks(:, 1), landmarks(:, 2), landmarks(:, 3), 20, 'filled','pentagram'); hold on;
+% zz=scatter3( landmarks(:, 1), landmarks(:, 2), landmarks(:, 3), 15,'black', 'filled','pentagram','DisplayName','Calibration board'); hold on;
 
-hold on;
+% hold on;
 
 end
