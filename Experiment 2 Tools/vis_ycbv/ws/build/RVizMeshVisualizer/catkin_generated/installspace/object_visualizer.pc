@@ -1,0 +1,8 @@
+prefix=/home/haoying/workspace/vis_ycbv/ws/install
+
+Name: object_visualizer
+Description: Description of object_visualizer
+Version: 0.0.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

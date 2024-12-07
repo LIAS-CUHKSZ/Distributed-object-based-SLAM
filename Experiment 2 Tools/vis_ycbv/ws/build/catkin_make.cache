@@ -1,0 +1,2 @@
+RVizMeshVisualizer
+-DCATKIN_DEVEL_PREFIX=/home/haoying/workspace/vis_ycbv/ws/devel -DCMAKE_INSTALL_PREFIX=/home/haoying/workspace/vis_ycbv/ws/install -G Unix Makefiles
